@@ -1,0 +1,137 @@
+.challenge,
+.results {
+  width: 464px;
+  height: 515px;
+  background: #fff;
+  border-radius: 24px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.challenge_avt {
+  transform: translate(96%, -80%);
+}
+
+.question {
+  transform: translateY(-100%);
+  width: fit-content;
+}
+
+.question p {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  color: #2f527b;
+}
+
+.options {
+  transform: translateY(-30%);
+}
+
+#flag {
+  transform: translateY(-60%);
+  display: none;
+  width: 373px;
+  height: 72px;
+}
+
+#flag p {
+  font-size: 18px;
+}
+
+#flag img {
+  width: 84px;
+  height: 54px;
+  filter: drop-shadow(0px 4px 24px rgba(0, 0, 0, 0.1));
+  border-radius: 4px;
+}
+
+.options p {
+  cursor: pointer;
+  width: 400px;
+  height: 50px;
+  padding: 10px;
+  background: transparent;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid rgba(96, 102, 208, 0.7);
+  box-sizing: border-box;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.options p i {
+  font-size: 20px;
+  color: #fff;
+}
+
+.see_res {
+  transform: translate(105%, -50%);
+  width: 116px;
+  height: 56px;
+  padding: 6px;
+  background: #f9a826;
+  text-transform: uppercase;
+  box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
+  border: none;
+  border-radius: 12px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.next {
+  transform: translate(120%, -50%);
+  width: 116px;
+  height: 56px;
+  padding: 6px;
+  background: #f9a826;
+  text-transform: uppercase;
+  box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
+  border: none;
+  border-radius: 12px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+}
+
+.title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  color: #1d355d;
+  box-sizing: border-box;
+}
+
+.res {
+  font-size: 40px;
+  color: rgb(110, 182, 142);
+}
+
+.try_again {
+  width: 209px;
+  height: 62px;
+  background-color: transparent;
+  border: 2px solid #1d355d;
+  box-sizing: border-box;
+  border-radius: 12px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  color: #1d355d;
+  cursor: pointer;
+  outline: none;
+}
