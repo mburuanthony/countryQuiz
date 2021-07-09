@@ -63,7 +63,7 @@ function Challenge() {
     const Xhr = new XMLHttpRequest();
     Xhr.open(
       "GET",
-      "https://cors-anywhere.herokuapp.com/https://restcountries.eu/rest/v2/all",
+      "https://cors-proxy-kelvin.herokuapp.com/https://restcountries.eu/rest/v2/all",
       true
     );
     Xhr.onload = function () {
