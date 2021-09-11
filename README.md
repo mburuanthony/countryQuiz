@@ -18,7 +18,7 @@ I made this application as a submission to a challenge from [DevChallenges](http
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/mburuanthony/windbnb.git
+$ git clone https://github.com/mburuanthony/countryQuiz.git
 
 # Install dependencies
 $ npm install
