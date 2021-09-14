@@ -9,7 +9,7 @@
 }
 
 .wrapper {
-  transform: translateX(110%);
+  margin: 20px auto;
   height: fit-content;
   width: 464px;
   display: flex;
