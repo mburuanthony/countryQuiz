@@ -42,7 +42,7 @@ function App() {
       setOption3(data[random1].name);
     };
     Xhr.send();
-  }, [setCountry]);
+  }, []);
 
   return (
     <avatarContext.Provider value={avatars}>
