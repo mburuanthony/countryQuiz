@@ -61,11 +61,7 @@ function Challenge() {
       "background-color:transparent;border: 2px solid rgba(96, 102, 208, 0.7);";
 
     const Xhr = new XMLHttpRequest();
-    Xhr.open(
-      "GET",
-      "https://cors-proxy-kelvin.herokuapp.com/https://restcountries.eu/rest/v2/all",
-      true
-    );
+    Xhr.open("GET", "https://restcountries.com/v2/all", true);
     Xhr.onload = function () {
       const data = JSON.parse(this.response);
       const randomNumber = Math.floor(Math.random() * data.length);
@@ -88,17 +84,19 @@ function Challenge() {
     document.querySelector(".see_res").style.display = "block";
   }
 
+  const { name, capital, flag } = { ...country };
+
   return (
     <div className="challenge">
       <img src={avatarimg.adventure} alt="" className="challenge_avt" />
 
       <div className="question">
         <div id="capital">
-          <p>{country.capital} is the capital of</p>
+          <p>{capital} is the capital of</p>
         </div>
 
         <div id="flag">
-          <img src={country.flag} alt="" />
+          <img src={flag} alt="" />
           <p>Which country does this flag belong to?</p>
         </div>
       </div>
@@ -116,7 +114,7 @@ function Challenge() {
         </p>
         <p className="option3" onClick={markCorrect}>
           <span>C</span>
-          <span>{country.name}</span>
+          <span>{name}</span>
           <i className="far fa-check-circle" id="check"></i>
         </p>
         <p className="option4" onClick={markWrong4}>

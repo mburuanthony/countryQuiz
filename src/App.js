@@ -14,7 +14,7 @@ import BgImage from "./Assets/Images/background.png";
 function App() {
   const avatars = useContext(avatarContext);
 
-  const [country, setCountry] = useState({});
+  const [country, setCountry] = useState(null);
   const [result, setResult] = useState(0);
 
   const [option1, setOption1] = useState("");
@@ -27,11 +27,7 @@ function App() {
 
   useEffect(() => {
     const Xhr = new XMLHttpRequest();
-    Xhr.open(
-      "GET",
-      "https://cors-proxy-kelvin.herokuapp.com/https://restcountries.eu/rest/v2/all",
-      true
-    );
+    Xhr.open("GET", "https://restcountries.com/v2/all", true);
     Xhr.onload = function () {
       const data = JSON.parse(this.response);
       const randomNumber = Math.floor(Math.random() * data.length);
