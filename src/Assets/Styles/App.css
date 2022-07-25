@@ -1,27 +1,40 @@
-.App {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 .wrapper {
-  margin: 20px auto;
-  height: fit-content;
-  width: 464px;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translateY(10%);
+  width: 30rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.wrapper h3 {
+.wrapper .intro {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.wrapper .intro h3 {
   font-style: normal;
   font-weight: bold;
-  font-size: 36px;
-  line-height: 54px;
+  font-size: 2rem;
+  line-height: 3rem;
   text-transform: uppercase;
   color: #f2f2f2;
+}
+
+.wrapper .intro .challenge_avt {
+  transform: translateY(30%);
+}
+
+@media only screen and (min-width: 768px) {
+  .wrapper {
+    transform: translateY(8%);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
 }

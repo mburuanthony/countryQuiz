@@ -1,3 +1,18 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans");
+
+*,
+*::before,
+*::after {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-image: url(./Assets/Images/background.png);
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
