@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import "../Assets/Styles/Challenge.css";
-import { avatarContext } from "../avatarContext";
-import { resultsContext } from "../resultsContext";
+import { avatarContext } from "../context/avatarContext";
+import { resultsContext } from "../context/resultsContext";
 
 function Results() {
   const history = useHistory();
@@ -17,7 +17,7 @@ function Results() {
 
   return (
     <div className="results">
-      <img src={avatarimg.winner} alt="" className="avt" />
+      <img src={avatarimg.winner} alt="avatar" className="avt" />
       <p className="title">Results</p>
       <p>
         You got <span className="res">{result}</span> correct answers(s)

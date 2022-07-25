@@ -1,19 +1,20 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "../Assets/Styles/Challenge.css";
-import { avatarContext } from "../avatarContext";
-import { countriesContext } from "../countriesContext";
-import { optionsContext } from "../optionsContext";
-import { resultsContext } from "../resultsContext";
+import { countriesContext } from "../context/countriesContext";
+import { optionsContext } from "../context/optionsContext";
+import { resultsContext } from "../context/resultsContext";
 
 function Challenge() {
   const [count, setCount] = useState(1);
-
-  const avatarimg = useContext(avatarContext);
   const [country, setCountry] = useContext(countriesContext);
   const [option1, option2, option3, setOption1, setOption2, setOption3] =
     useContext(optionsContext);
   const [result, setResult] = useContext(resultsContext);
+
+  const history = useHistory();
+  const capitalRef = useRef();
+  const flagRef = useRef();
 
   const markCorrect = () => {
     document.querySelector(".option3").style.cssText =
@@ -74,29 +75,27 @@ function Challenge() {
     Xhr.send();
   };
 
-  if (count === 3) {
-    document.querySelector("#capital").style.display = "none";
-    document.querySelector("#flag").style.display = "block";
-  }
+  const goToResults = () => {
+    setCount(0);
+    history.push("/results");
+  };
 
-  if (count === 5) {
-    document.querySelector(".next").style.display = "none";
-    document.querySelector(".see_res").style.display = "block";
+  if (count === 4) {
+    capitalRef.current.style.display = "none";
+    flagRef.current.style.display = "block";
   }
 
   const { name, capital, flag } = { ...country };
 
   return (
     <div className="challenge">
-      <img src={avatarimg.adventure} alt="" className="challenge_avt" />
-
       <div className="question">
-        <div id="capital">
-          <p>{capital} is the capital of</p>
+        <div id="capital" ref={capitalRef}>
+          <p>{capital} is the capital of ?</p>
         </div>
 
-        <div id="flag">
-          <img src={flag} alt="" />
+        <div id="flag" ref={flagRef}>
+          <img src={flag} alt="flag" />
           <p>Which country does this flag belong to?</p>
         </div>
       </div>
@@ -124,13 +123,12 @@ function Challenge() {
         </p>
       </div>
 
-      <button className="next" onClick={getAnotherCountry}>
+      <button
+        className="next"
+        onClick={count === 4 ? goToResults : getAnotherCountry}
+      >
         next
       </button>
-
-      <Link to="/results" className="see_res" style={{ display: "none" }}>
-        next
-      </Link>
     </div>
   );
 }

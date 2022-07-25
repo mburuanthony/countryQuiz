@@ -1,15 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import { avatarContext } from "./avatarContext";
-import { countriesContext } from "./countriesContext";
-import { resultsContext } from "./resultsContext";
-import { optionsContext } from "./optionsContext";
+import { avatarContext } from "./context/avatarContext";
+import { countriesContext } from "./context/countriesContext";
+import { resultsContext } from "./context/resultsContext";
+import { optionsContext } from "./context/optionsContext";
 
 import Challenge from "./Components/Challenge";
 import Results from "./Components/Results";
 
 import "./Assets/Styles/App.css";
-import BgImage from "./Assets/Images/background.png";
 
 function App() {
   const avatars = useContext(avatarContext);
@@ -54,18 +53,17 @@ function App() {
           ]}
         >
           <resultsContext.Provider value={[result, setResult]}>
-            <div
-              className="App"
-              style={{
-                backgroundImage: `url(${BgImage})`,
-                backgroundPosition: "center",
-                backgroundAttachment: "scroll",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-              }}
-            >
+            <div className="App">
               <div className="wrapper">
-                <h3>Country quiz</h3>
+                <div className="intro">
+                  <h3>Country quiz</h3>
+                  <img
+                    src={avatars.adventure}
+                    alt="avatar"
+                    className="challenge_avt"
+                  />
+                </div>
+
                 <Router>
                   <Switch>
                     <Route
