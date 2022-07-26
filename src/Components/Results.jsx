@@ -1,23 +1,25 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
+import { useCountry } from "../context/countriesContext";
+import { useResults } from "../context/resultsContext";
+
 import "../Assets/Styles/Challenge.css";
-import { avatarContext } from "../context/avatarContext";
-import { resultsContext } from "../context/resultsContext";
+import winner from "../Assets/Images/undraw_winners_ao2o2.svg";
 
 function Results() {
   const history = useHistory();
-
-  const avatarimg = useContext(avatarContext);
-  const [result, setResult] = useContext(resultsContext);
+  const { fetchAnotherCountry, setFetchAnotherCountry } = useCountry();
+  const { result, setResult } = useResults();
 
   const endGame = () => {
     setResult(0);
+    setFetchAnotherCountry(!fetchAnotherCountry);
     history.push("/");
   };
 
   return (
     <div className="results">
-      <img src={avatarimg.winner} alt="avatar" className="avt" />
+      <img src={winner} alt="avatar" className="avt" />
       <p className="title">Results</p>
       <p>
         You got <span className="res">{result}</span> correct answers(s)

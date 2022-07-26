@@ -1,24 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import { avatarContext } from "./context/avatarContext";
-import { countriesContext } from "./context/countriesContext";
-import { resultsContext } from "./context/resultsContext";
-import { optionsContext } from "./context/optionsContext";
+import { CountryProvider, useCountry } from "./context/countriesContext";
+import { OptionsProvider, useOptions } from "./context/optionsContext";
+import { ResultsProvider } from "./context/resultsContext";
 
 import Challenge from "./Components/Challenge";
 import Results from "./Components/Results";
 
 import "./Assets/Styles/App.css";
+import adventure from "./Assets/Images/undraw_adventure_4hum1.svg";
 
 function App() {
-  const avatars = useContext(avatarContext);
-
-  const [country, setCountry] = useState(null);
-  const [result, setResult] = useState(0);
-
-  const [option1, setOption1] = useState("");
-  const [option2, setOption2] = useState("");
-  const [option3, setOption3] = useState("");
+  const { setCountry, fetchAnotherCountry } = useCountry();
+  const { setOption1, setOption2, setOption3 } = useOptions();
 
   const random1 = Math.floor(Math.random() * 250);
   const random2 = Math.floor(Math.random() * 250);
@@ -26,7 +20,7 @@ function App() {
 
   useEffect(() => {
     const Xhr = new XMLHttpRequest();
-    Xhr.open("GET", "https://restcountries.com/v2/all", true);
+    Xhr.open("GET", "https://restcountries.com/v2/all");
     Xhr.onload = function () {
       const data = JSON.parse(this.response);
       const randomNumber = Math.floor(Math.random() * data.length);
@@ -37,53 +31,44 @@ function App() {
       setOption3(data[random1].name);
     };
     Xhr.send();
-  }, []);
+  }, [fetchAnotherCountry]);
 
   return (
-    <avatarContext.Provider value={avatars}>
-      <countriesContext.Provider value={[country, setCountry]}>
-        <optionsContext.Provider
-          value={[
-            option1,
-            option2,
-            option3,
-            setOption1,
-            setOption2,
-            setOption3,
-          ]}
-        >
-          <resultsContext.Provider value={[result, setResult]}>
-            <div className="App">
-              <div className="wrapper">
-                <div className="intro">
-                  <h3>Country quiz</h3>
-                  <img
-                    src={avatars.adventure}
-                    alt="avatar"
-                    className="challenge_avt"
-                  />
-                </div>
+    <div className="App">
+      <div className="wrapper">
+        <div className="intro">
+          <h3>Country quiz</h3>
+          <img src={adventure} alt="avatar" className="challenge_avt" />
+        </div>
 
-                <Router>
-                  <Switch>
-                    <Route
-                      path="/"
-                      exact
-                      component={Challenge}
-                      setOption1={setOption1}
-                      setOption2={setOption2}
-                      setOption3={setOption3}
-                    />
-                    <Route path="/results" component={Results} />
-                  </Switch>
-                </Router>
-              </div>
-            </div>
-          </resultsContext.Provider>
-        </optionsContext.Provider>
-      </countriesContext.Provider>
-    </avatarContext.Provider>
+        <Router>
+          <Switch>
+            <Route
+              path="/"
+              exact
+              component={Challenge}
+              setOption1={setOption1}
+              setOption2={setOption2}
+              setOption3={setOption3}
+            />
+            <Route path="/results" component={Results} />
+          </Switch>
+        </Router>
+      </div>
+    </div>
   );
 }
 
-export default App;
+function AppProvider() {
+  return (
+    <CountryProvider>
+      <OptionsProvider>
+        <ResultsProvider>
+          <App />
+        </ResultsProvider>
+      </OptionsProvider>
+    </CountryProvider>
+  );
+}
+
+export default AppProvider;
