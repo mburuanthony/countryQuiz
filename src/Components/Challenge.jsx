@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useCountry } from "../context/countriesContext";
 import { useOptions } from "../context/optionsContext";
 import { useResults } from "../context/resultsContext";
 
@@ -8,7 +7,8 @@ import "../Assets/Styles/Challenge.css";
 
 function Challenge() {
   const [count, setCount] = useState(0);
-  const { country, fetchAnotherCountry, setFetchAnotherCountry } = useCountry();
+  const [shuffled, setShuffled] = useState([]);
+  const { country, fetchAnotherCountry, setFetchAnotherCountry } = useOptions();
   const { name, capital, flag } = { ...country };
   const { option1, option2, option3 } = useOptions();
   const { result, setResult } = useResults();
@@ -49,11 +49,13 @@ function Challenge() {
   useEffect(() => {
     const answers = [name, option1, option2, option3];
     const shuffledAnswers = answers.sort(() => Math.random() - 0.5);
-    option1SpanRef.current = shuffledAnswers[0];
-    option2SpanRef.current = shuffledAnswers[1];
-    option3SpanRef.current = shuffledAnswers[2];
-    option4SpanRef.current = shuffledAnswers[3];
-  }, [option1, option2, option3]);
+    setShuffled(shuffledAnswers.reverse());
+  }, [name, option1, option2, option3]);
+
+  option1SpanRef.current = shuffled[0];
+  option2SpanRef.current = shuffled[1];
+  option3SpanRef.current = shuffled[2];
+  option4SpanRef.current = shuffled[3];
 
   const checkAnswer = (answerRef) => {
     if (answerRef.current?.childNodes[1].textContent === name) {
@@ -61,6 +63,8 @@ function Challenge() {
       answerRef.current.childNodes[2].className = "far fa-check-circle";
       setResult(result + 1);
     } else {
+      setResult((prevRes) => prevRes);
+
       answerRef.current.style.cssText = styles.fail;
       answerRef.current.childNodes[2].className = "far fa-times-circle";
     }

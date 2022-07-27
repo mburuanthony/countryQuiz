@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { useCountry } from "../context/countriesContext";
+import { useOptions } from "../context/optionsContext";
 import { useResults } from "../context/resultsContext";
 
 import "../Assets/Styles/Challenge.css";
@@ -8,7 +8,7 @@ import winner from "../Assets/Images/undraw_winners_ao2o2.svg";
 
 function Results() {
   const history = useHistory();
-  const { fetchAnotherCountry, setFetchAnotherCountry } = useCountry();
+  const { fetchAnotherCountry, setFetchAnotherCountry } = useOptions();
   const { result, setResult } = useResults();
 
   const endGame = () => {
