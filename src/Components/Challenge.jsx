@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useOptions } from "../context/optionsContext";
 import { useResults } from "../context/resultsContext";
-
 import "../Assets/Styles/Challenge.css";
 
 function Challenge() {
@@ -25,8 +24,16 @@ function Challenge() {
   const option3SpanRef = useRef();
   const option4SpanRef = useRef();
 
+  const disableOPtions = (option) => {
+    option1Ref.current.disabled = option;
+    option2Ref.current.disabled = option;
+    option3Ref.current.disabled = option;
+    option4Ref.current.disabled = option;
+  };
+
   const getAnotherCountry = () => {
     setFetchAnotherCountry(!fetchAnotherCountry);
+    disableOPtions(false);
 
     option1Ref.current.style.cssText = styles.cleared;
     option2Ref.current.style.cssText = styles.cleared;
@@ -68,6 +75,8 @@ function Challenge() {
       answerRef.current.style.cssText = styles.fail;
       answerRef.current.childNodes[2].className = "far fa-times-circle";
     }
+
+    disableOPtions(true);
   };
 
   return (
@@ -84,7 +93,7 @@ function Challenge() {
       </div>
 
       <div className="options">
-        <p
+        <button
           className="option1"
           ref={option1Ref}
           onClick={() => checkAnswer(option1Ref)}
@@ -92,8 +101,8 @@ function Challenge() {
           <span>A</span>
           <span>{option1SpanRef.current}</span>
           <i></i>
-        </p>
-        <p
+        </button>
+        <button
           className="option2"
           ref={option2Ref}
           onClick={() => checkAnswer(option2Ref)}
@@ -101,8 +110,8 @@ function Challenge() {
           <span>B</span>
           <span>{option2SpanRef.current}</span>
           <i></i>
-        </p>
-        <p
+        </button>
+        <button
           className="option3"
           ref={option3Ref}
           onClick={() => checkAnswer(option3Ref)}
@@ -110,8 +119,8 @@ function Challenge() {
           <span>C</span>
           <span>{option3SpanRef.current}</span>
           <i id="check"></i>
-        </p>
-        <p
+        </button>
+        <button
           className="option4"
           ref={option4Ref}
           onClick={() => checkAnswer(option4Ref)}
@@ -119,7 +128,7 @@ function Challenge() {
           <span>D</span>
           <span>{option4SpanRef.current}</span>
           <i></i>
-        </p>
+        </button>
       </div>
 
       <button
