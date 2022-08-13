@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useOptions } from "../context/optionsContext";
 import { useResults } from "../context/resultsContext";
 import "../Assets/Styles/Challenge.css";
+import { Indicator } from "./Indicator";
 
 function Challenge() {
   const [count, setCount] = useState(0);
@@ -151,12 +152,16 @@ function Challenge() {
         </button>
       </div>
 
-      <button
-        className="next"
-        onClick={count === 4 ? goToResults : getAnotherCountry}
-      >
-        next
-      </button>
+      <div id="next_indicator">
+        <Indicator count={count} />
+
+        <button
+          className="next"
+          onClick={count === 4 ? goToResults : getAnotherCountry}
+        >
+          next
+        </button>
+      </div>
     </div>
   );
 }
