@@ -28,7 +28,7 @@ export const Indicator = ({ count }) => {
       <span
         className="indicator"
         style={{
-          backgroundColor: count == 4 ? colors.coveredd : colors.default,
+          backgroundColor: count === 4 ? colors.coveredd : colors.default,
         }}
       ></span>
     </div>
