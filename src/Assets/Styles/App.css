@@ -30,6 +30,17 @@
   transform: translateY(30%);
 }
 
+#copy {
+  text-align: center;
+  margin-top: 3rem;
+  color: rgba(2, 2, 22, 0.75);
+  font-weight: 600;
+}
+
+#copy a {
+  color: rgba(2, 2, 22, 1);
+}
+
 @media only screen and (min-width: 768px) {
   .wrapper {
     transform: translateY(8%);

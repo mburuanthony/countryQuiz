@@ -22,7 +22,7 @@ function Results() {
       <img src={winner} alt="avatar" className="avt" />
       <p className="title">Results</p>
       <p>
-        You got <span className="res">{result}</span> correct answers(s)
+        You got <span className="res">{result}</span> correct answer(s)
       </p>
 
       <button className="try_again" onClick={endGame}>

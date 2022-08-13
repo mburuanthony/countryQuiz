@@ -58,6 +58,16 @@ function App() {
           </Switch>
         </Router>
       </div>
+      <p id="copy">
+        &copy; &nbsp;<span id="year">{new Date().getUTCFullYear()}</span> &nbsp;
+        <a
+          href="https://mburuanthony.github.io/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Antony Mburu
+        </a>
+      </p>
     </div>
   );
 }
