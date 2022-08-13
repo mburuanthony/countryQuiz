@@ -23,12 +23,12 @@ $ git clone https://github.com/mburuanthony/countryQuiz.git
 
 ```bash
 # Install dependencies
-$ npm install
+$ yarn add pkg.json
 ```
 
 ```bash
 # Run the app
-$ npm start
+$ yarn start
 ```
 
 [mburuanthony](https://github.com/mburuanthony)
