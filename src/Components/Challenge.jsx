@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useOptions } from "../context/optionsContext";
 import { useResults } from "../context/resultsContext";
-import "../Assets/Styles/Challenge.css";
 import { Indicator } from "./Indicator";
+import "../Assets/Styles/Challenge.css";
 
 function Challenge() {
   const [count, setCount] = useState(0);
