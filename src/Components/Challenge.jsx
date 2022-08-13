@@ -31,6 +31,25 @@ function Challenge() {
     option4Ref.current.disabled = option;
   };
 
+  const markCorrect = () => {
+    if (option1Ref.current?.childNodes[1].textContent === name) {
+      option1Ref.current.style.cssText = styles.correct;
+      option1Ref.current.childNodes[2].className = "far fa-check-circle";
+    }
+    if (option2Ref.current?.childNodes[1].textContent === name) {
+      option2Ref.current.style.cssText = styles.correct;
+      option2Ref.current.childNodes[2].className = "far fa-check-circle";
+    }
+    if (option3Ref.current?.childNodes[1].textContent === name) {
+      option3Ref.current.style.cssText = styles.correct;
+      option3Ref.current.childNodes[2].className = "far fa-check-circle";
+    }
+    if (option4Ref.current?.childNodes[1].textContent === name) {
+      option4Ref.current.style.cssText = styles.correct;
+      option4Ref.current.childNodes[2].className = "far fa-check-circle";
+    }
+  };
+
   const getAnotherCountry = () => {
     setFetchAnotherCountry(!fetchAnotherCountry);
     disableOPtions(false);
@@ -76,6 +95,7 @@ function Challenge() {
       answerRef.current.childNodes[2].className = "far fa-times-circle";
     }
 
+    markCorrect();
     disableOPtions(true);
   };
 
