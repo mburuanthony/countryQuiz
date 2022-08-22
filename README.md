@@ -1,20 +1,6 @@
-<!-- Please update value in the {}  -->
-
 <h1 align="center">countryQuiz</h1>
 
-<div align="center">
-  <h3>
-    <a href="https://antony-mburu-countryquiz.netlify.app/#/">
-      Solution
-    </a>
-    <span> | </span>
-    <a href="https://devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8">
-      Challenge
-    </a>
-  </h3>
-</div>
-
-I made this application as a submission to a challenge from [DevChallenges](https://devchallenges.io/challenges). The [challenge](https://devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8) was to build an application to complete the given user stories provided with figma designs and an [api](https://restcountries.eu/) to work with. The user stories were quite difficult to implement but nonetheless achievable and successfully implemented.
+This app consumes data from the restcountries.eu api and uses the data for a game like experience where a player is required to guess the capital city of a given country or provided with the flag of a country, guess it's name.
 
 ```bash
 # Clone this repository
@@ -23,7 +9,7 @@ $ git clone https://github.com/mburuanthony/countryQuiz.git
 
 ```bash
 # Install dependencies
-$ yarn add pkg.json
+$ yarn add package.json
 ```
 
 ```bash
