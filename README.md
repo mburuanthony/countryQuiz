@@ -1,6 +1,6 @@
 <h1 align="center">countryQuiz</h1>
 
-This app consumes data from the restcountries.eu api and uses the data for a game like experience where a player is required to guess the capital city of a given country or provided with the flag of a country, guess it's name.
+this app consumes data from the restcountries.eu api and uses the data for a gamified experience. a player is required to guess the capital city of a given country or ,provided with the flag of a country , guess it's name.
 
 ```bash
 # Clone this repository
